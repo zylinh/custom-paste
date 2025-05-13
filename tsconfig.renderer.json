@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler", // or "node" - "bundler" is often preferred with Vite
+    "strict": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": true, // Vite requires this
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "skipLibCheck": true,
+    "noEmit": true, // Vite handles emission, this tsconfig is for type checking
+    "baseUrl": ".",
+    "paths": {
+      "@renderer/*": ["src/renderer/*"],
+      "@shared/*": ["src/shared/*"], // Allow access to shared types
+      "@/*": ["src/*"] // General alias, should point to project src
+    },
+    "types": ["vite/client", "node"] // Include vite client types and node for any node-specific utils if used in renderer (less common)
+  },
+  "include": [
+    "src/renderer/**/*.ts",
+    "src/renderer/**/*.d.ts",
+    "src/renderer/**/*.tsx",
+    "src/renderer/**/*.vue",
+    "src/shared/**/*.ts", // Include shared types for renderer context
+    "vite.config.ts" // Include vite config for type checking its setup
+  ],
+  "references": [{ "path": "./tsconfig.json" }] // Reference the main tsconfig for project structure
+}

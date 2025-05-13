@@ -1,0 +1,7 @@
+.roo
+docs
+.roomodes
+generate_mcp_yaml.py
+node_modules
+memory-bank
+dist
